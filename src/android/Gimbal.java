@@ -112,7 +112,9 @@ public class Gimbal extends CordovaPlugin {
         Log.i(TAG, "Stop Gimbal Service");
         if (isServiceRunning) {
             Log.d(TAG, "Stopping the Gimbal Service.");
-            stopScanSightings();
+            if(gimbalBeaconListener != null) {
+                stopScanSightings();
+            }
 
             GimbalDebugger.disableBeaconSightingsLogging();
             isServiceRunning = false;
@@ -130,9 +132,9 @@ public class Gimbal extends CordovaPlugin {
         Log.i(TAG, "Stop Gimbal Scan Sightings");
         if (isServiceRunning) {
             Log.d(TAG, "Stopping Gimbal Scan Sightings");
-            gimbalBeaconListener = null;
             getBeaconManager().stopListening();
             getBeaconManager().removeListener(gimbalBeaconListener);
+            gimbalBeaconListener = null;
             beaconManager = null;
         } else {
             Log.d(TAG, "Cannot stop  Gimbal Scan Sightings as Gimbal service  isn't currently running.");
