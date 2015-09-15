@@ -33,9 +33,8 @@
             </array>
         </config-file>
 
-        <config-file target="*-Info.plist" parent="dict">
-            <key>NSLocationAlwaysUsageDescription</key>
-            <string>Specifies the reason for accessing the user's location information.</string>
+        <config-file target="*-Info.plist" parent="NSBluetoothPeripheralUsageDescription">
+            <string>Pour permettre d'activer des défis et des contenus selon la détection de balises près de votre appareil et pouvoir détecter si le mode bluetooth est activé ou pas sur votre appareil.</string>
         </config-file>
 
         <header-file src="src/ios/Gimbal.h"/>
